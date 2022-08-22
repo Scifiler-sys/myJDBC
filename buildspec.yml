@@ -5,9 +5,15 @@ phases:
   install:
     commands:
       - apt-get install openjdk-8-JDK
+    
+  pre-build:
+    commands:
+      - touch database.properties
+      - echo 'url='
   
   build:
-    - mvn clean package
+    commands:
+      - mvn clean package
   
   artifacts:
     files:
