@@ -4,6 +4,7 @@ phases:
   #Installing JDK for our aws server
   install:
     commands:
+      - apt-get update
       - apt-get install openjdk-8-JDK
     
   pre_build:
