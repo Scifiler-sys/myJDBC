@@ -6,7 +6,7 @@ phases:
     commands:
       - apt-get install openjdk-8-JDK
     
-  pre-build:
+  pre_build:
     commands:
       - touch database.properties
       - echo 'url='
