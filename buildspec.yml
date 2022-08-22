@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  #Installing JDK for our aws server
+  install:
+    commands:
+      - apt-get install openjdk-8-JDK
+  
+  build:
+    - mvn clean package
+  
+  artifacts:
+    files:
+      - Dockerfile
+      - src\main\resources\database.properties

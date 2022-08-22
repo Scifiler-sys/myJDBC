@@ -14,7 +14,7 @@ public class PokemonDao implements Dao<Pokemon> {
 
     @Override
     public Pokemon addInstance(Pokemon instance) {
-        String sql = "insert into Pokemon(pokename, pokelevel, health, damage) values(?,?,?,?) returning pokeid";
+        String sql = "insert into Pokemon(name, pokelevel, health, damage) values(?,?,?,?) returning id";
 
         try (Connection con = ConnectionUtil.getConnection()) {
             PreparedStatement prstmt = con.prepareStatement(sql);
@@ -27,7 +27,7 @@ public class PokemonDao implements Dao<Pokemon> {
             ResultSet rs = prstmt.executeQuery();
             rs.next();
 
-            instance.setId(rs.getInt("pokeid"));
+            instance.setId(rs.getInt("id"));
             
         } catch (Exception e) {
             //TODO: handle exception
@@ -54,8 +54,8 @@ public class PokemonDao implements Dao<Pokemon> {
                 
                 //The actual mapping of the sql table into java obj
                 listOfPokemon.add(new Pokemon(
-                    rs.getInt("pokeId"),
-                    rs.getString("pokename"),
+                    rs.getInt("id"),
+                    rs.getString("name"),
                     rs.getInt("pokelevel"),
                     rs.getInt("health"),
                     rs.getInt("damage")
