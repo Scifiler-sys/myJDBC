@@ -8,89 +8,78 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.models.Pokemon;
-import com.revature.util.ConnectionUtil;
+import com.revature.utils.ConnectionUtil;
 
-public class PokemonDao implements IDao<Pokemon> {
+public class PokemonDao implements Dao<Pokemon> {
 
     @Override
-    public Pokemon insert(Pokemon instance) {
+    public Pokemon addInstance(Pokemon instance) {
+        String sql = "insert into Pokemon(pokename, pokelevel, health, damage) values(?,?,?,?) returning pokeid";
+
         try (Connection con = ConnectionUtil.getConnection()) {
+            PreparedStatement prstmt = con.prepareStatement(sql);
 
-            //Created a sql statement that should work in DBeaver but replaced the hardcoded value we usually play with "?"
-            String sql = "insert into pokemon(pokeName, pokeLevel) values(?, ?) returning pokeId";
+            prstmt.setString(1, instance.getName());
+            prstmt.setInt(2, instance.getLevel());
+            prstmt.setInt(3, instance.getHealth());
+            prstmt.setInt(4, instance.getDamage());
 
-            //Essentially stating that our String sql variable is actually going to be a sql statment by utilizing PreparedStatement class
-            PreparedStatement statement = con.prepareStatement(sql);
-
-            //Changing the ? into actual values we get from our instance argument
-            statement.setString(1, instance.getName());
-            statement.setInt(2, instance.getLevel());
-
-            //Grabs the result of that query into ResultSet
-            //It is a class that can essentially grab the table format result into a java object
-            ResultSet rs = statement.executeQuery();
-
-            //Grabs the very first row that came from this query
+            ResultSet rs = prstmt.executeQuery();
             rs.next();
 
-            //Sets the autogenerate Id back to our instance argument
             instance.setId(rs.getInt("pokeid"));
-
-            //Returning our pokemon instance with the updated Id
-            return instance;
-
+            
         } catch (Exception e) {
+            //TODO: handle exception
             e.printStackTrace();
         }
-        return null;
+        
+        return instance;
     }
 
     @Override
-    public List<Pokemon> getAll() {
+    public List<Pokemon> getAllInstances() {
+        String sql = "select * from Pokemon";
 
-        //Sql statement required to grab all rows from Pokemon Table
-        String sql = "Select * From Pokemon";
-
-        //Setting up a variable that will store our many pokemon objs
-        List<Pokemon> listOfPoke = new ArrayList<Pokemon>();
+        List<Pokemon> listOfPokemon = new ArrayList<>();
 
         try (Connection con = ConnectionUtil.getConnection()) {
-
-            //We used Statement class instead because our sql statement doesn't have any parameters (it doesn't have any "?" needed)
-            Statement statement = con.createStatement();
             
-            ResultSet rs = statement.executeQuery(sql);
+            Statement stmt = con.createStatement();
 
-            //Used a while loop to go through all the rows of our table
-            //We don't really know how many rows there are so we have a condition that will keep running as long as there is a next row
+            ResultSet rs = stmt.executeQuery(sql);
+
+            //next() method will check if there is another row in our sql table
             while (rs.next()) {
-
-                //Mapping result for table into a Pokemon object to be stored in an arraylist collection
-                listOfPoke.add(new Pokemon(
-                    rs.getInt("pokeid"), 
-                    rs.getString("pokename"), 
-                    rs.getInt("pokelevel")
+                
+                //The actual mapping of the sql table into java obj
+                listOfPokemon.add(new Pokemon(
+                    rs.getInt("pokeId"),
+                    rs.getString("pokename"),
+                    rs.getInt("pokelevel"),
+                    rs.getInt("health"),
+                    rs.getInt("damage")
                 ));
             }
 
         } catch (Exception e) {
+            //TODO: handle exception
             e.printStackTrace();
         }
-
-        return listOfPoke;
+        
+        return listOfPokemon;
     }
 
     @Override
-    public boolean update(Pokemon instance) {
-
-        return false;
-    }
-
-    @Override
-    public boolean delete(Pokemon instance) {
+    public Pokemon updateInstance(Pokemon instance) {
         // TODO Auto-generated method stub
-        return false;
+        return null;
     }
 
+    @Override
+    public Pokemon deleteInstance(Pokemon instance) {
+        // TODO Auto-generated method stub
+        return null;
+    }
     
 }
