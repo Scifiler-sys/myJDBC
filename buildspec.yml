@@ -15,7 +15,7 @@ phases:
     commands:
       - mvn clean package
   
-  artifacts:
-    files:
-      - Dockerfile
-      - src\main\resources\database.properties
+artifacts:
+  files:
+    - Dockerfile
+    - src\main\resources\database.properties
