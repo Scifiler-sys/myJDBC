@@ -8,6 +8,10 @@ copy /target/rest.war /usr/local/tomcat/webapps
 # Copy the database.properties and paste it for our docker image
 # copy src/main/resources/database.properties /usr/local/tomcat/webapps
 
+ENV url=${url}
+ENV user=${user}
+ENV pass=${pass}
+
 #Exposing port 8080
 expose 8080
 
