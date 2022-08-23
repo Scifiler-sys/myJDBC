@@ -3,8 +3,8 @@ version: 0.2
 phases:
   #Specifying that we will need JDK 8 for this application
   install:
-    runtime-version:
-      - java: corretto8
+    runtime-versions:
+      java: corretto8
   
   build:
     commands:
