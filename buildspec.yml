@@ -1,19 +1,14 @@
 version: 0.2
 
 phases:
-  #Installing JDK for our aws server
+  #Specifying that we will need JDK 8 for this application
   install:
-    commands:
-      - apt-get update
-      - apt-get install openjdk-8-JDK
-    
-  pre_build:
-    commands:
-      - touch database.properties
-      - echo 'url='
+    runtime-version:
+      - java: corretto8
   
   build:
     commands:
+      - java -version
       - mvn clean package
   
 artifacts:
