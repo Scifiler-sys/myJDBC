@@ -9,7 +9,6 @@ phases:
   build:
     commands:
       - java -version
-      - echo ${url}
       - mvn clean package
   
 artifacts:
