@@ -40,9 +40,9 @@ public class ConnectionUtil {
             //Loads our property file from the resources folder
             // prop.load(ConnectionUtil.class.getResourceAsStream("/database.properties"));
             //Uses key-value pair to find information
-            url = System.getProperty("URL");
-            user = System.getProperty("USER");
-            pass = System.getProperty("PASS");
+            url = System.getProperty("url");
+            user = System.getProperty("user");
+            pass = System.getProperty("pass");
 
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
