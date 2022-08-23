@@ -41,8 +41,8 @@ public class ConnectionUtil {
             // prop.load(ConnectionUtil.class.getResourceAsStream("/database.properties"));
             //Uses key-value pair to find information
             url = System.getenv("url");
-            user = System.getProperty("user");
-            pass = System.getProperty("pass");
+            user = System.getenv("user");
+            pass = System.getenv("pass");
 
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
