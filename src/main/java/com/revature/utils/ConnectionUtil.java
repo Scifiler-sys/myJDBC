@@ -30,7 +30,7 @@ public class ConnectionUtil {
 
         //Java made class that uses .properties files to grab information from
         //It uses key-value pair to find information
-        Properties prop = new Properties();
+        // Properties prop = new Properties();
 
         
         try {
@@ -38,11 +38,11 @@ public class ConnectionUtil {
             Class.forName("org.postgresql.Driver");
 
             //Loads our property file from the resources folder
-            prop.load(ConnectionUtil.class.getResourceAsStream("/database.properties"));
+            // prop.load(ConnectionUtil.class.getResourceAsStream("/database.properties"));
             //Uses key-value pair to find information
-            url = prop.getProperty("url");
-            user = prop.getProperty("user");
-            pass = prop.getProperty("pass");
+            url = System.getProperty("url");
+            user = System.getProperty("user");
+            pass = System.getProperty("pass");
 
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
