@@ -38,7 +38,7 @@ public class ConnectionUtil {
             Class.forName("org.postgresql.Driver");
 
             //Loads our property file from the resources folder
-            prop.load(new FileReader("/usr/local/tomcat/webapps/database.properties"));
+            prop.load(ConnectionUtil.class.getResourceAsStream("/database.properties"));
             //Uses key-value pair to find information
             url = prop.getProperty("url");
             user = prop.getProperty("user");
