@@ -44,6 +44,10 @@ public class ConnectionUtil {
             user = System.getenv("user");
             pass = System.getenv("pass");
 
+            // url = prop.getProperty("url");
+            // user = prop.getProperty("user");
+            // pass = prop.getProperty("pass");
+
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
             //TODO: handle exception

@@ -9,7 +9,7 @@
 * Just think of all the game launchers you use nowadays like steam or epic store, when you get a game you just need to press one button and that actually downloads everything you will ever need for that game even its dependencies
 * This is where Docker shines, just give the person an image and bam you can run the application
 
-# What is the purpose of Docker? (v2)
+## What is the purpose of Docker? (v2)
 * Analogy with business and hiring more people
 * It allows developers to work in standardized environments using Containers
     * Meaning they can work with whatever development environment (Java, .NET, Ruby, etc.) they want with whatever OS (Windows, Linux, Mac, etc.) they want and still be able to give their application to everyone (as long as they have a docker engine)
@@ -47,6 +47,7 @@
     * You can scale up or tear down application as business dictates (based on demand)
 * Run more worklods on the same hardware
     * Since containers is very lightweight unlike virtual machines, you can do other stuff while docker is running
+
 
 ## Docker artifacts/Terminology
 * Dockerfile
@@ -87,10 +88,22 @@
     * It will execute the CLI commands you specify in the run command
     * Essentially, if you need to run something in the terminal (like dotnet build), you use the run instructions
 
+# Docker CLI
+* Docker build - builds an image using the existing Dockerfile
+* Docker run - runs a container containing whatever image you specify
+* Docker login - let's us login to docker
+* Docker pull - grabs a remote repository from dockerhub
+
+# Docker Daemon
+* As we know, daemon means just any background process happening in your computer that you don't really control
+* This is where the majority of the "thinking" that is happening with docker
+* It will manage our containers, image creation, connecting to the registry, etc.
+
 # Making a docker image
 1. Create a Dockerfile
 2. Add the corresponding docker instructions 
-3. 
+3. docker build
+4. docker run
 
 # Introduction to more AWS
 * AWS has a bunch of services that is more than just creating a database

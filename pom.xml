@@ -17,6 +17,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+
+    <sonar.organization>211004-reston-net</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <sonar.projectKey>211004-Reston-NET_BrianStiner-P1</sonar.projectKey>
+    <sonar.login>91efcf7498b9d1d31a5c279fc52e5f6c55883178</sonar.login>
   </properties>
 
   <dependencies>
