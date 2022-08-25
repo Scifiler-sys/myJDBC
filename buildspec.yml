@@ -16,7 +16,7 @@ phases:
   post_build:
     commands:
       - echo "Testing and sending sonar cloud report"
-      - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+      - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Pcoverage
   
 artifacts:
   files:
