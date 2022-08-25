@@ -8,6 +8,6 @@ from tomcat:8.0-jre8
 # /usr/local/tomcat folders came from downloading the tomcat8 in the from instruction
 copy /target/rest.war /usr/local/tomcat/webapps
 
-# CMD instruction is essentially what we need to run on the terminal to start this application
+# CMD instruction gives docker the default way of how to execute this image
 # Tomcat documentation mentions to use catalina.sh to run the app
 CMD ["catalina.sh", "run"]
