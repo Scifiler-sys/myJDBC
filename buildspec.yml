@@ -8,9 +8,14 @@ phases:
   
   build:
     commands:
+      - echo "Building .tar file"
       - java -version
       - echo ${url}
       - mvn clean package
+  
+  post_build:
+    - echo "Testing and sending sonar cloud report"
+    - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
   
 artifacts:
   files:
