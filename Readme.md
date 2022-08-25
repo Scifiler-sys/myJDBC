@@ -133,8 +133,26 @@
 
 ## Manually deploying app to EC2
 1. Create EC2 instance
-2. Create Config
-```
+2. SSH to EC2
+3. apt update
+3. Install docker
+4. docker login
+5. docker pull
+6. docker run
 
-```
+# Introduction to Code Analysis
+* A further way for a computer to analyze your code to ensure you are following good coding practices and also gives you a direction on certain things you might want to change
+* Does not actually check if the functions are working on your app (that is what unit tests are for) and more about looking at your c# files and ensuring you follow good coding practicies
+* It will perform a **static code anaylsis**
+    * Just the fancy way of saying, it will check your code without running it and just scanning your c# files and seeing any patterns that might be bad coding practices
+    * If done by a human, that is what we call a code review (just for your fun information)
+## SonarCloud
+* An online platform that helps store all of our code analysis
+## Terminology to understand the report you are getting
+* Bugs - They have a chance that will break your application entirely and should be handled quickly
+    * Hence when an application crashed we mostly say it is probably cause of a bug in the program
+* Code Smells - They checked how properly coded your application is
+    * Ex: Creating a variable you never use, having commented out code, unused imports, etc.
+* Code coverage - How much lines of your code is tested by a unit test
+    * So if our unit tests covers 100 lines of code in a 300 lines of code would give a 33.33% code coverage
 
