@@ -8,7 +8,7 @@ phases:
   
   build:
     commands:
-      - echo "Building .tar file"
+      - echo "Building .war file"
       - java -version
       - echo ${url}
       - mvn clean package
